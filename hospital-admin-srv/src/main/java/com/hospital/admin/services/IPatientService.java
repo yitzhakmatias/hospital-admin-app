@@ -6,4 +6,6 @@ import java.util.UUID;
 
 public interface IPatientService {
     PatientDTO GetPatientById(UUID id);
+
+    PatientDTO savePatient(PatientDTO patientDTO);
 }

@@ -12,4 +12,13 @@ public class PatientServiceImpl implements IPatientService {
         return PatientDTO.builder().id(id)
                 .name("John").lastName("Martinez").build();
     }
+
+    @Override
+    public PatientDTO savePatient(PatientDTO patientDTO) {
+        return PatientDTO.builder()
+                .id(UUID.randomUUID())
+                .name(patientDTO.getName())
+
+                .build();
+    }
 }
