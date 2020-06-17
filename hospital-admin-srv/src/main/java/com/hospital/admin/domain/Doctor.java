@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -19,11 +18,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Patient {
+public class Doctor {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
+    @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
     private UUID id;
 
     private String Name;
@@ -39,5 +38,4 @@ public class Patient {
     private Timestamp UpdatedTime;
     private String CreatedBy;
     private String UpdatedBy;
-
 }

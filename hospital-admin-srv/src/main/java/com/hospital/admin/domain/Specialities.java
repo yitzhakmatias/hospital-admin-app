@@ -9,8 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -19,18 +19,17 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Patient {
+public class Specialities {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
 
+    @NotBlank
     private String Name;
-    private String LastName;
+    private String Description;
 
-    private Timestamp BirthDate;
-    private String Address;
     private String Photo;
     @CreationTimestamp
     @Column(updatable = false)
@@ -39,5 +38,4 @@ public class Patient {
     private Timestamp UpdatedTime;
     private String CreatedBy;
     private String UpdatedBy;
-
 }

@@ -1,16 +1,20 @@
 package com.hospital.admin.controller;
 
 import com.hospital.admin.model.DoctorDTO;
+import com.hospital.admin.model.PatientDTO;
 import com.hospital.admin.services.IDoctorService;
+import lombok.extern.slf4j.Slf4j;
+import lombok.val;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
+@Slf4j
 @RequestMapping("/api/v1/doctor")
 @RestController
 public class DoctorController {
@@ -23,5 +27,19 @@ public class DoctorController {
     @GetMapping({"/{doctorId}"})
     public ResponseEntity<DoctorDTO> GetById(@PathVariable("doctorId") UUID id) {
         return new ResponseEntity<>(doctorService.GetDoctorById(id), HttpStatus.OK);
+    }
+
+    @PostMapping // POST -create a new Patient
+    public ResponseEntity handlePost(@Valid @RequestBody DoctorDTO doctorDTO) {
+        log.debug("handle post...");
+        val saveDto = doctorService.saveDoctor(doctorDTO);
+        var headers = new HttpHeaders();
+        headers.add("Location", "/api/v1/doctor/" + saveDto.getId().toString());
+        return new ResponseEntity(headers, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{doctorId}")
+    public ResponseEntity updateDoctor(@PathVariable("beerId") UUID uuid, @RequestBody @Validated DoctorDTO doctorDTO) {
+        return new ResponseEntity<>(doctorService.updateDoctor(uuid, doctorDTO), HttpStatus.NO_CONTENT);
     }
 }

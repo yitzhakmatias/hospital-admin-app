@@ -1,5 +1,6 @@
 package com.hospital.admin.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,13 +17,14 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class DoctorDTO {
+    @JsonProperty("DoctorId")
     @Null
-    private UUID id;
+    private UUID Id;
     @NotBlank
-    private String name;
+    private String Name;
     @NotBlank
-    private String lastName;
-    private Date birthDate;
+    private String LastName;
+    private Date BirthDate;
     @NotBlank
     private String Address;
     private String Photo;
