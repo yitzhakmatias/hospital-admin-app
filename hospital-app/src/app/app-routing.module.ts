@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'specialties-component', component: SpecialtiesComponent},
   {path: 'doctors-component', component: DoctorsComponent},
   { path: '',   redirectTo: '/', pathMatch: 'full' }, // redirect to `first-component`
-  { path: '**', component: PatientComponent }
+  { path: '**', component: DoctorsComponent }
 ];
 
 @NgModule({

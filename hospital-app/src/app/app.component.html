@@ -1,13 +1,63 @@
 <body>
+<!-- START NAV -->
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Patient List
+      </a>
+
+      <a class="navbar-item">
+        Doctor's List
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
 <section class="section">
   <div class="tile is-ancestor">
     <div class="tile is-2 is-vertical is-parent">
       <div class="tile is-child box">
         <aside class="menu">
           <ul class="menu-list">
-            <li routerLinkActive="active"><a [routerLink]="['/patient-component']" >Patient List</a></li>
+            <li  routerLinkActive="active"><a [routerLink]="['/doctors-component']" >Doctor List</a></li>
+            <li><a [routerLink]="['/patient-component']" >Patient List</a></li>
             <li ><a [routerLink]="['/specialties-component']" >Specialty List</a></li>
-            <li ><a [routerLink]="['/doctors-component']" >Doctor List</a></li>
+
 
           </ul>
         </aside>
@@ -15,7 +65,6 @@
     </div>
     <div class="tile is-parent">
       <div class="tile is-child ">
-
         <router-outlet></router-outlet>
       </div>
     </div>
