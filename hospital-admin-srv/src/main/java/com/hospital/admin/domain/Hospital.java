@@ -16,27 +16,21 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Doctor extends Audit {
+public class Hospital {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     private UUID id;
 
     private String Name;
-    private String LastName;
 
-    private Timestamp BirthDate;
-    private String Address;
-    private String Photo;
-
-
+    @CreationTimestamp
+    @Column(updatable = false)
+    private Timestamp CreatedTime;
+    @UpdateTimestamp
+    private Timestamp UpdatedTime;
     private String CreatedBy;
     private String UpdatedBy;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "doctor_patient",
-            joinColumns = @JoinColumn(name = "doctor_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "patient_id", referencedColumnName = "id"))
-    private Set<Patient> patients;
 }

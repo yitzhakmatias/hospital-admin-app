@@ -1,17 +1,15 @@
 package com.hospital.admin.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
-import javax.persistence.Column;
+import javax.persistence.*;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.ForeignKey;
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 @Getter
 @Setter
@@ -19,11 +17,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Patient {
+public class Patient extends Audit {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false, name = "id")
     private UUID id;
 
     private String Name;
@@ -32,12 +30,9 @@ public class Patient {
     private Timestamp BirthDate;
     private String Address;
     private String Photo;
-    @CreationTimestamp
-    @Column(updatable = false)
-    private Timestamp CreatedTime;
-    @UpdateTimestamp
-    private Timestamp UpdatedTime;
-    private String CreatedBy;
-    private String UpdatedBy;
 
+    @ManyToMany(mappedBy = "patients")
+    private Set<Doctor> doctors = new HashSet<>();
 }
+
+

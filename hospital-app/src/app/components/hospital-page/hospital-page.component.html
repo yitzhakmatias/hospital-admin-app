@@ -1,0 +1,13 @@
+<div class="tile is-child box">
+  <aside class="menu">
+    <ul class="menu-list">
+      <li *ngFor="let item of hospitals">
+        <a [routerLink]="['/doctors-component']" id="{{item.HospitalId}}" >
+          <app-hospital-list [hospital]="item"></app-hospital-list>
+        </a>
+
+      </li>
+    </ul>
+  </aside>
+</div>
+

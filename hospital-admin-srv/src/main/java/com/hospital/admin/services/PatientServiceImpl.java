@@ -46,7 +46,7 @@ public class PatientServiceImpl implements IPatientService {
         patient.setBirthDate(patientDTO.getBirthDate());
         patient.setLastName(patientDTO.getLastName());
         patient.setUpdatedBy(patientDTO.getUpdatedBy());
-        patient.setUpdatedTime(patientDTO.getUpdatedTime());
+
 
         patient = _patientRepository.save(patient);
 
