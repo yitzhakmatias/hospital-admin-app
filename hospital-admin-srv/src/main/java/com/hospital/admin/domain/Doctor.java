@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Getter
 @Setter
@@ -39,4 +41,10 @@ public class Doctor extends Audit {
             joinColumns = @JoinColumn(name = "doctor_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "patient_id", referencedColumnName = "id"))
     private Set<Patient> patients;
+
+    public Doctor(String name, Patient... patients) {
+        this.Name = name;
+        this.patients = Stream.of(patients).collect(Collectors.toSet());
+        this.patients.forEach(x -> x.getDoctors().add(this));
+    }
 }

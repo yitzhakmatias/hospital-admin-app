@@ -8,12 +8,14 @@ import com.hospital.admin.repositories.NoteRepository;
 import com.hospital.admin.repositories.PatientRepository;
 import lombok.val;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
 import java.util.HashSet;
 
 @Component
+@Order(3)
 public class PatientLoader implements CommandLineRunner {
 
     private final PatientRepository _patientRepository;
@@ -34,7 +36,7 @@ public class PatientLoader implements CommandLineRunner {
 
     private void loadPatient() {
 
-        if (_patientRepository.count() == 0) {
+        if (_patientRepository.count() > 0) {
 
             val doctors = new HashSet<Doctor>();
 
@@ -56,7 +58,7 @@ public class PatientLoader implements CommandLineRunner {
                     .build()
             );
 
-            _noteNoteRepository.save(Note.builder().Note("TESTSETTESTET1233").patient(patient).build());
+            _noteNoteRepository.save(Note.builder().Note("Lorem ipsum dolor sit amet, consectetur adipiscing elit").patient(patient).build());
 
             _patientRepository.save(Patient.builder()
 
@@ -67,7 +69,9 @@ public class PatientLoader implements CommandLineRunner {
                     .BirthDate(Timestamp.valueOf("2007-09-23 10:10:10.0"))
                     .build()
             );
-            _noteNoteRepository.save(Note.builder().Note("5585255564654").patient(patient).build());
+            _noteNoteRepository.save(Note.builder().Note("Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa ")
+                    .patient(patient)
+                    .build());
         }
         System.out.println("loader: " + _patientRepository.count());
     }

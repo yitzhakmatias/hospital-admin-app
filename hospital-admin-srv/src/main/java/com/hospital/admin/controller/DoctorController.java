@@ -12,6 +12,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j
@@ -22,6 +24,13 @@ public class DoctorController {
 
     public DoctorController(IDoctorService doctorService) {
         this.doctorService = doctorService;
+    }
+
+    @GetMapping({"/patients/{doctorId}"})
+    public ResponseEntity<List<DoctorDTO>> GetPatientsByDoctorId(@PathVariable("doctorId") UUID id) {
+        var lst = new ArrayList<DoctorDTO>();
+        lst.add(doctorService.GetDoctorById(id));
+        return new ResponseEntity<>(lst, HttpStatus.OK);
     }
 
     @GetMapping({"/{doctorId}"})

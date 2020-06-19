@@ -33,6 +33,10 @@ public class Patient extends Audit {
 
     @ManyToMany(mappedBy = "patients")
     private Set<Doctor> doctors = new HashSet<>();
+
+    public Patient(String name) {
+        this.Name = name;
+    }
 }
 
 

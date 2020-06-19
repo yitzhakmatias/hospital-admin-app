@@ -6,10 +6,12 @@ import com.hospital.admin.domain.Patient;
 import com.hospital.admin.repositories.HospitalRepository;
 import com.hospital.admin.repositories.PatientRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
 @Component
+@Order(2)
 public class hospitalLoader implements CommandLineRunner {
     private final HospitalRepository _hospitalRepository;
 
@@ -18,6 +20,7 @@ public class hospitalLoader implements CommandLineRunner {
     }
 
     @Override
+
     public void run(String... args) throws Exception {
         loadHospital();
     }

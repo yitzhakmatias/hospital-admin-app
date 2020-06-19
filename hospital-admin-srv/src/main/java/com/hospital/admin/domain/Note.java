@@ -26,8 +26,6 @@ public class Note extends Audit {
 
     private String Note;
 
-
-
     @ManyToOne(
             fetch = FetchType.LAZY,
             optional = false
