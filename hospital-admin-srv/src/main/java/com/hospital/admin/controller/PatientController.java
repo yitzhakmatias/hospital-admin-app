@@ -1,6 +1,8 @@
 package com.hospital.admin.controller;
 
+import com.hospital.admin.model.DoctorDTO;
 import com.hospital.admin.model.PatientDTO;
+import com.hospital.admin.services.IDoctorService;
 import com.hospital.admin.services.IPatientService;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -20,9 +22,11 @@ import java.util.UUID;
 public class PatientController {
 
     private final IPatientService patientService;
+    private final IDoctorService doctorService;
 
-    public PatientController(IPatientService patientService) {
+    public PatientController(IPatientService patientService, IDoctorService doctorService) {
         this.patientService = patientService;
+        this.doctorService = doctorService;
     }
 
     @GetMapping({"/{patientId}"})
@@ -64,4 +68,6 @@ public class PatientController {
         return patientService.GetPatientList();
 
     }
+
+
 }

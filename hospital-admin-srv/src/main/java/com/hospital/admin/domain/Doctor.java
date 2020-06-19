@@ -42,8 +42,9 @@ public class Doctor extends Audit {
             inverseJoinColumns = @JoinColumn(name = "patient_id", referencedColumnName = "id"))
     private Set<Patient> patients;
 
-    public Doctor(String name, Patient... patients) {
+    public Doctor(String name, String lastName, Patient... patients) {
         this.Name = name;
+        this.setLastName(lastName);
         this.patients = Stream.of(patients).collect(Collectors.toSet());
         this.patients.forEach(x -> x.getDoctors().add(this));
     }

@@ -59,6 +59,9 @@ public class PatientServiceImpl implements IPatientService {
         _patientRepository.delete(patient);
     }
 
+
+
+
     @Override
     public List<PatientDTO> GetPatientList() {
 

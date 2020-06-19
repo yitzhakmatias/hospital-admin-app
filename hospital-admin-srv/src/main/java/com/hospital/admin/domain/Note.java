@@ -39,4 +39,8 @@ public class Note extends Audit {
     )
     private Patient patient;
 
+    public Note(String Note, Patient patient) {
+        this.Note = Note;
+        this.patient = patient;
+    }
 }

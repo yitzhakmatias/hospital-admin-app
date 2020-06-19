@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Null;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -35,5 +36,10 @@ public class PatientDTO {
     private Timestamp UpdatedTime;
     private String CreatedBy;
     private String UpdatedBy;
+
+    private List<NoteDTO> Notes;
+
+   // private List<DoctorDTO> Doctors;
+
 
 }

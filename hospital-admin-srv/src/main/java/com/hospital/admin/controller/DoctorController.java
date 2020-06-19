@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 @RequestMapping("/api/v1/doctor")
 @RestController
@@ -30,6 +30,7 @@ public class DoctorController {
     public ResponseEntity<List<DoctorDTO>> GetPatientsByDoctorId(@PathVariable("doctorId") UUID id) {
         var lst = new ArrayList<DoctorDTO>();
         lst.add(doctorService.GetDoctorById(id));
+
         return new ResponseEntity<>(lst, HttpStatus.OK);
     }
 
@@ -50,5 +51,12 @@ public class DoctorController {
     @PutMapping("/{doctorId}")
     public ResponseEntity updateDoctor(@PathVariable("beerId") UUID uuid, @RequestBody @Validated DoctorDTO doctorDTO) {
         return new ResponseEntity<>(doctorService.updateDoctor(uuid, doctorDTO), HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("collections")
+    List<DoctorDTO> ListPatients() {
+
+        return doctorService.GetDoctorList();
+
     }
 }

@@ -1,6 +1,7 @@
 package com.hospital.admin.bootstrap;
 
 import com.hospital.admin.domain.Doctor;
+import com.hospital.admin.domain.Note;
 import com.hospital.admin.domain.Patient;
 import com.hospital.admin.repositories.DoctorRepository;
 import com.hospital.admin.repositories.PatientRepository;
@@ -49,7 +50,9 @@ public class DoctorLoader implements CommandLineRunner {
             val doctors = new HashSet<Doctor>();
 
             doctors.add(doctor);
-            _doctorRepository.save(new Doctor("Peter Slayer", new Patient("John Smith"), new Patient("Aron Sandler")));
+            _doctorRepository.save(new Doctor("Peter" , "Jhones",
+                    new Patient("John ","Smith",  new Note("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.", patient)),
+                    new Patient("Aron ","Sandler", new Note("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.", patient))));
             ;
         }
     }

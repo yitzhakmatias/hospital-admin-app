@@ -15,4 +15,5 @@ public interface IPatientService {
     PatientDTO updatePatient(PatientDTO patientDTO);
 
     void delete(UUID id);
+
 }

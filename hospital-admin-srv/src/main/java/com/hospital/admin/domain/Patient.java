@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import java.sql.Timestamp;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Getter
 @Setter
@@ -34,8 +36,17 @@ public class Patient extends Audit {
     @ManyToMany(mappedBy = "patients")
     private Set<Doctor> doctors = new HashSet<>();
 
-    public Patient(String name) {
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,
+            mappedBy = "patient"
+    )
+    @Builder.Default
+    private Set<Note> Notes = new HashSet<>();
+
+    public Patient(String name, String lastName, Note... notes) {
         this.Name = name;
+        this.LastName = lastName;
+        this.Notes = Stream.of(notes).collect(Collectors.toSet());
+
     }
 }
 
