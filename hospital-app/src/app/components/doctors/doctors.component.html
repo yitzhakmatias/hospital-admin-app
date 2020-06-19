@@ -1,1 +1,31 @@
-<p>doctors works!</p>
+<div class="container">
+  <h2 class="subtitle"><strong>Doctor's List :</strong></h2>
+
+  <div class="control">
+    <div class="select">
+      <select formControlName="doctors" (change)='onOptionsSelected($event)'>
+        <option>--Seleccionar Doctor--</option>
+        <option *ngFor="let item of doctorList" [value]="item.DoctorId">{{item.name}} {{item.lastName}}</option>
+      </select>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="container mt-6">
+  <div class="tile is-child box mt-4">
+    <aside class="menu">
+      <h2 class="subtitle"><strong>Patient List</strong></h2>
+
+      <ul class="menu-list">
+        <li *ngFor="let item of patientList">
+          <app-patient-item [patient]="item"></app-patient-item>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</div>
+
+
+

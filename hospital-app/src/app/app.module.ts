@@ -10,6 +10,14 @@ import {HospitalPageComponent} from './components/hospital-page/hospital-page.co
 import {HospitalList} from './components/hospital-page/components/HospitalList';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {PatientForm} from './components/patient/components/patient-form';
+import {StoreModule} from '@ngrx/store';
+import {reducers, metaReducers} from './reducers';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
+import {PatientItemComponent} from './components/doctors/components/PatientItemComponent';
+import {DoctorItemComponent} from './components/patient/components/doctorItem.component';
+
+
 
 
 @NgModule({
@@ -20,12 +28,22 @@ import {PatientForm} from './components/patient/components/patient-form';
     DoctorsComponent,
     HospitalPageComponent,
     HospitalList,
-    PatientForm
+    PatientForm,
+    PatientItemComponent,
+    DoctorItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+      }
+    }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
 
   ],
   providers: [],

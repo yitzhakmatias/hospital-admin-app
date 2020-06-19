@@ -25,7 +25,6 @@
             ],
             "styles": [
               "src/styles.css"
-
             ],
             "scripts": []
           },
@@ -120,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "hospital-app"
+    }
+  },
+  "defaultProject": "hospital-app",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
