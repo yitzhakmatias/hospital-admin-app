@@ -5,6 +5,8 @@ import {PatientForm} from '../patient/components/patient-form';
 import {DoctorList} from './components/DoctorList';
 import {PatientList} from './components/PatientList';
 import {SpecialityList} from './components/SpecialityList';
+import { HospitalForm } from './Forms/HospitalForm';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -12,15 +14,19 @@ import {SpecialityList} from './components/SpecialityList';
   declarations: [
     DoctorList,
     PatientList,
-    SpecialityList
+    SpecialityList,
+    HospitalForm
   ],
   exports: [
     DoctorList,
     SpecialityList,
-    PatientList
+    PatientList,
+    HospitalForm
   ],
   imports: [
-    CommonModule
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule
   ]
 })
 export class HospitalModule { }

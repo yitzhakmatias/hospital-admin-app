@@ -12,8 +12,9 @@ export class HospitalPageComponent implements OnInit {
   doctors: any;
   specialities: any;
   patients: any;
-
+  isHospVisible:boolean;
   constructor(private  hospitalServices: HospitalService) {
+    this.isHospVisible=true;
   }
 
   ngOnInit(): void {
@@ -46,5 +47,9 @@ export class HospitalPageComponent implements OnInit {
 
   editSpeciality($event: MouseEvent) {
 
+  }
+
+  showHospitalForm() {
+    this.isHospVisible=!this.isHospVisible;
   }
 }

@@ -17,6 +17,7 @@ import {environment} from '../environments/environment';
 import {PatientItemComponent} from './components/doctors/components/PatientItemComponent';
 import {DoctorItemComponent} from './components/patient/components/doctorItem.component';
 import {HospitalModule} from './components/hospital-page/hospital.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -36,6 +37,8 @@ import {HospitalModule} from './components/hospital-page/hospital.module';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     FontAwesomeModule,
     StoreModule.forRoot(reducers, {
@@ -47,6 +50,7 @@ import {HospitalModule} from './components/hospital-page/hospital.module';
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     HospitalModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

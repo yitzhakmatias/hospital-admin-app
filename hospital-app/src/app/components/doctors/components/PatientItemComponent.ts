@@ -20,6 +20,6 @@ export class PatientItemComponent implements OnInit {
     }).catch(e => {
       this.image = 'https://bulma.io/images/placeholders/128x128.png';
     });
-    console.log(this.patient);
+
   }
 }

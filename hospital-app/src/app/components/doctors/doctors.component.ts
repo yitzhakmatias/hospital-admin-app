@@ -4,7 +4,7 @@ import {PatientService} from '../../services/PatientService';
 import {DoctorServices} from '../../services/DoctorServices';
 
 @Component({
-  selector: 'app-doctors',
+  selector: 'app-doctors-display',
   templateUrl: './doctors.component.html',
   styleUrls: ['./doctors.component.css']
 })
@@ -14,6 +14,7 @@ export class DoctorsComponent implements OnInit {
   doctorList: any;
 
   constructor(private  patientServices: PatientService, private  doctorService: DoctorServices) {
+    console.log("this is the doctors");
   }
 
   ngOnInit(): void {
