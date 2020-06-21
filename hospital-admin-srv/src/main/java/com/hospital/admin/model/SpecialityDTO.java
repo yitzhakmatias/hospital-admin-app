@@ -14,11 +14,12 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class NoteDTO {
-    @JsonProperty("NoteId")
+public class SpecialityDTO {
+    @JsonProperty("Id")
     @Null
     private UUID Id;
     @NotBlank
-    private String Note;
-    private String DoctorName;
+    private String Name;
+    private String Description;
+
 }

@@ -1,6 +1,9 @@
 package com.hospital.admin.controller;
 
+import com.hospital.admin.model.DoctorDTO;
 import com.hospital.admin.model.HospitalDTO;
+import com.hospital.admin.model.PatientDTO;
+import com.hospital.admin.model.SpecialityDTO;
 import com.hospital.admin.services.IHospitalServices;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -61,6 +64,26 @@ public class HospitalController {
     public List<HospitalDTO> ListPatients() {
 
         return hospitalServices.GetHospitalList();
+
+    }
+
+    @GetMapping("/doctors/{id}")
+    public List<DoctorDTO> DoctorListByHospitalId(@PathVariable("id") UUID id) {
+
+        return hospitalServices.GetDoctorsByHospitalId(id);
+
+    }
+
+    @GetMapping("/specialities/{id}")
+    public List<SpecialityDTO> SpecialityListByHospitalId(@PathVariable("id") UUID id) {
+
+        return hospitalServices.GetSpecialitiesByHospitalId(id);
+
+    }
+    @GetMapping("/patients/{id}")
+    public List<PatientDTO> PatientListByHospitalId(@PathVariable("id") UUID id) {
+
+        return hospitalServices.GetPatientsByHospitalId(id);
 
     }
 }

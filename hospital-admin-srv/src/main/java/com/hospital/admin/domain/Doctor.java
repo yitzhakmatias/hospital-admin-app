@@ -46,6 +46,6 @@ public class Doctor extends Audit {
         this.Name = name;
         this.setLastName(lastName);
         this.patients = Stream.of(patients).collect(Collectors.toSet());
-        this.patients.forEach(x -> x.getDoctors().add(this));
+
     }
 }

@@ -2,19 +2,29 @@ package com.hospital.admin.services;
 
 import com.hospital.admin.domain.Hospital;
 import com.hospital.admin.mappers.HospitalMapper;
+import com.hospital.admin.model.DoctorDTO;
 import com.hospital.admin.model.HospitalDTO;
 import com.hospital.admin.model.PatientDTO;
+import com.hospital.admin.model.SpecialityDTO;
 import com.hospital.admin.repositories.HospitalRepository;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
 @Service
 public class HospitalService implements IHospitalServices {
     private final HospitalRepository _hospitalRepository;
     private ModelMapper modelMapper;
+    @PersistenceContext
+    private EntityManager em;
 
     public HospitalService(HospitalRepository hospitalRepository) {
         _hospitalRepository = hospitalRepository;
@@ -43,7 +53,7 @@ public class HospitalService implements IHospitalServices {
         hospital.setName(hospitalDTO.getName());
 
         hospital.setUpdatedBy(hospitalDTO.getUpdatedBy());
-        hospital.setUpdatedTime(hospitalDTO.getUpdatedTime());
+
         hospital.setUpdatedBy(hospitalDTO.getUpdatedBy());
 
         hospital = _hospitalRepository.save(hospital);
@@ -62,9 +72,41 @@ public class HospitalService implements IHospitalServices {
 
 
         var result = _hospitalRepository.findAll();
+
         return
                 result.stream()
                         .map(source -> modelMapper.map(source, HospitalDTO.class))
                         .collect(Collectors.toList());
+    }
+
+    public List<DoctorDTO> GetDoctorsByHospitalId(UUID uuid) {
+        TypedQuery<Object[]> query = em.createQuery("select  d from Hospital h inner join HospitalDoctor hd on h.id=hd.HospitalId" +
+                " inner join Doctor d on hd.DoctorId = d.id where h.id =?1", Object[].class);
+        query.setParameter(1, uuid);
+        List<Object[]> results = query.getResultList();
+        Type listType = new TypeToken<List<DoctorDTO>>() {
+        }.getType();
+        return modelMapper.map(results, listType);
+    }
+    public List<SpecialityDTO> GetSpecialitiesByHospitalId(UUID uuid) {
+        TypedQuery<Object[]> query = em.createQuery("select s from Hospital h inner join HospitalSpeciality hs on h.id=hs.HospitalId" +
+                " inner join Speciality s on hs.SpecialityId = s.id where h.id =?1", Object[].class);
+        query.setParameter(1, uuid);
+        List<Object[]> results = query.getResultList();
+        Type listType = new TypeToken<List<SpecialityDTO>>() {
+        }.getType();
+        return modelMapper.map(results, listType);
+    }
+
+    @Override
+    public List<PatientDTO> GetPatientsByHospitalId(UUID uuid) {
+
+        TypedQuery<Object[]> query = em.createQuery("select s from Hospital h inner join HospitalPatient hs on h.id=hs.HospitalId" +
+                " inner join Patient s on hs.PatientId = s.id where h.id =?1", Object[].class);
+        query.setParameter(1, uuid);
+        List<Object[]> results = query.getResultList();
+        Type listType = new TypeToken<List<PatientDTO>>() {
+        }.getType();
+        return modelMapper.map(results, listType);
     }
 }

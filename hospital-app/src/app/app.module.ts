@@ -16,6 +16,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {PatientItemComponent} from './components/doctors/components/PatientItemComponent';
 import {DoctorItemComponent} from './components/patient/components/doctorItem.component';
+import {HospitalModule} from './components/hospital-page/hospital.module';
 
 
 
@@ -30,7 +31,8 @@ import {DoctorItemComponent} from './components/patient/components/doctorItem.co
     HospitalList,
     PatientForm,
     PatientItemComponent,
-    DoctorItemComponent
+    DoctorItemComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import {DoctorItemComponent} from './components/patient/components/doctorItem.co
       }
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-
+    HospitalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

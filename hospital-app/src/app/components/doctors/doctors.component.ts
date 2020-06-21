@@ -20,11 +20,9 @@ export class DoctorsComponent implements OnInit {
     this.doctorService.getDoctors().then((resp) => {
 
       this.doctorList = resp;
-      // this.patientList= resp.patients;
+
     });
 
-
-    console.log('asdfasdfas');
   }
 
   onOptionsSelected(item): void {

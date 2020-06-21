@@ -53,7 +53,7 @@ public class PatientLoader implements CommandLineRunner {
                     .Name("John")
                     .LastName("Smith")
                     .Address("123 Saint Paul")
-                    .doctors(doctors)
+
                     .BirthDate(Timestamp.valueOf("2007-09-23 10:10:10.0"))
                     .build()
             );

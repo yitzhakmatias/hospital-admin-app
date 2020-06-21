@@ -9,16 +9,42 @@ import {HospitalService} from '../../services/hospital.service';
 export class HospitalPageComponent implements OnInit {
 
   hospitals: any;
+  doctors: any;
+  specialities: any;
+  patients: any;
 
   constructor(private  hospitalServices: HospitalService) {
   }
 
   ngOnInit(): void {
     this.hospitalServices.getHospitals().then((resp) => {
-
       this.hospitals = resp;
-      console.log(resp);
     });
   }
 
+  loadDependencies(event) {
+    var target = event.currentTarget;
+    var idAttr = target.attributes.id.value;
+    this.hospitalServices.getDoctorsByHospital(idAttr).then((res) => {
+      this.doctors = res;
+    });
+    this.hospitalServices.getSpecialitiesByHospital(idAttr).then(res => {
+        this.specialities = res;
+      }
+    );
+    this.hospitalServices.getPatientsByHospital(idAttr).then(res => {
+        this.patients = res;
+      }
+    );
+
+
+  }
+
+  editDoctor($event: MouseEvent) {
+
+  }
+
+  editSpeciality($event: MouseEvent) {
+
+  }
 }

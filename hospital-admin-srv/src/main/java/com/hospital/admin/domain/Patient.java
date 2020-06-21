@@ -33,9 +33,6 @@ public class Patient extends Audit {
     private String Address;
     private String Photo;
 
-    @ManyToMany(mappedBy = "patients")
-    private Set<Doctor> doctors = new HashSet<>();
-
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,
             mappedBy = "patient"
     )

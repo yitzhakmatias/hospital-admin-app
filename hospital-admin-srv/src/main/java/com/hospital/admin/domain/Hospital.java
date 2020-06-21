@@ -16,7 +16,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Hospital {
+@Table(name = "Hospital")
+public class Hospital extends Audit {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -24,12 +25,8 @@ public class Hospital {
     private UUID id;
 
     private String Name;
+    private String Photo;
 
-    @CreationTimestamp
-    @Column(updatable = false)
-    private Timestamp CreatedTime;
-    @UpdateTimestamp
-    private Timestamp UpdatedTime;
     private String CreatedBy;
     private String UpdatedBy;
 

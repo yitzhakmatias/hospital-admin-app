@@ -1,13 +1,91 @@
-<div class="tile is-child box">
-  <aside class="menu">
-    <ul class="menu-list">
-      <li *ngFor="let item of hospitals">
-        <a [routerLink]="['/doctors-component']" id="{{item.HospitalId}}" >
-          <app-hospital-list [hospital]="item"></app-hospital-list>
-        </a>
+<div class="tile is-ancestor">
 
-      </li>
-    </ul>
-  </aside>
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+      <p class="title">Hospital </p>
+      <aside class="menu">
+        <ul class="menu-list">
+          <li *ngFor="let item of hospitals">
+            <a  id="{{item.HospitalId}}" (click)="loadDependencies($event)" >
+              <app-hospital-list [hospital]="item"></app-hospital-list>
+            </a>
+
+          </li>
+        </ul>
+      </aside>
+    </article>
+  </div>
+
+  <div class="tile is-vertical is-8">
+
+
+    <div class=" buttons is-right">
+      <p class="control">
+        <button class="button is-link">
+         Add Patient
+        </button>
+      </p>
+      <p class="control">
+        <button class="button is-link">
+         Add Doctor
+        </button>
+      </p>
+      <p class="control">
+        <button class="button is-link">
+          Add Speciality
+        </button>
+      </p>
+    </div>
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+
+        <article class="tile is-child box">
+          <p class="title">Doctors</p>
+          <aside class="menu">
+            <ul class="menu-list">
+              <li *ngFor="let item of doctors">
+                <a  id="{{item.DoctorId}}" (click)="editDoctor($event)" >
+                  <app-doctor-list [doctor]="item"></app-doctor-list>
+                </a>
+              </li>
+            </ul>
+          </aside>
+        </article>
+        <article class="tile is-child box">
+          <p class="title">Specialities</p>
+          <aside class="menu">
+            <ul class="menu-list">
+              <li *ngFor="let item of specialities">
+                <a  id="{{item.Id}}" (click)="editSpeciality($event)" >
+                  <app-speciality-list [speciality]="item"></app-speciality-list>
+                </a>
+              </li>
+            </ul>
+          </aside>
+        </article>
+      </div>
+
+      <div class="tile is-parent">
+
+        <article class="tile is-child box">
+          <p class="title">Patients</p>
+          <aside class="menu">
+            <ul class="menu-list">
+              <li *ngFor="let item of patients">
+                <a  id="{{item.PatientId}}" (click)="editSpeciality($event)" >
+                  <app-patient-list [patient]="item"></app-patient-list>
+                </a>
+              </li>
+            </ul>
+          </aside>
+        </article>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
+
+
 
