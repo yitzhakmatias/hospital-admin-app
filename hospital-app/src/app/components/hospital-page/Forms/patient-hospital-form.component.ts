@@ -19,7 +19,7 @@ export class PatientHospitalForm implements OnInit {
   submitted = false;
   @Output()
   onClose: EventEmitter<any> = new EventEmitter();
-  patient: Doctor;
+  patient: Patient;
   @Input()
   hospitalUUID: any;
 
@@ -31,6 +31,7 @@ export class PatientHospitalForm implements OnInit {
       name: ['', Validators.required],
       lastName: ['', Validators.required],
       address: ['', Validators.required],
+      birthDate: ['', Validators.required],
       photoURL: ['']
     });
   }
@@ -46,8 +47,8 @@ export class PatientHospitalForm implements OnInit {
       this.patient = new Patient();
       this.patient.name = name;
       this.patient.lastName = lastName;
+      this.patient.birthDate =  this.patientHospForm.get('birthDate').value;;
       this.patient.address = this.patientHospForm.get('address').value;
-
       this.patient.hospitalId = this.hospitalUUID;
 
       this.patientSrv.savePatient(this.patient).then(response => {

@@ -3,4 +3,5 @@ export class Patient {
   lastName: string;
   address: any;
   hospitalId : any;
+  birthDate : any;
 }

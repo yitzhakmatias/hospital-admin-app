@@ -30,8 +30,8 @@
             </div>
           </div>
           <div class="field ">
-            <label class="label">Address</label>
-            <input  type="date" data-display-mode="inline" data-is-range="true" data-close-on-select="false">
+            <label class="label">BirthDate</label>
+            <input formControlName="birthDate"  type="date" data-display-mode="inline" data-is-range="true" data-close-on-select="false">
             <div *ngIf="submitted && f.amount.errors" class="help is-danger">
               <div *ngIf="f.amount.errors.required">Name is required</div>
             </div>
