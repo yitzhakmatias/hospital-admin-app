@@ -30,4 +30,5 @@ public class DoctorDTO {
     private String Address;
     private String Photo;
     private List<PatientDTO> patients;
+    private UUID hospitalId;
 }

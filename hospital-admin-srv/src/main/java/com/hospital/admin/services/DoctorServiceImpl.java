@@ -1,9 +1,11 @@
 package com.hospital.admin.services;
 
-import com.hospital.admin.domain.Patient;
+import com.hospital.admin.domain.Doctor;
+import com.hospital.admin.domain.HospitalDoctor;
+import com.hospital.admin.domain.HospitalSpeciality;
 import com.hospital.admin.model.DoctorDTO;
-import com.hospital.admin.model.PatientDTO;
 import com.hospital.admin.repositories.DoctorRepository;
+import com.hospital.admin.repositories.HospitalDoctorRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,9 +23,11 @@ public class DoctorServiceImpl implements IDoctorService {
     @PersistenceContext
     private EntityManager em;
     private final DoctorRepository _doctorRepository;
+    private final HospitalDoctorRepository _HospitalDoctorRepository;
     private ModelMapper modelMapper;
-    public DoctorServiceImpl(DoctorRepository doctorRepository) {
+    public DoctorServiceImpl(DoctorRepository doctorRepository, HospitalDoctorRepository hospitalDoctorRepository) {
         this._doctorRepository = doctorRepository;
+        _HospitalDoctorRepository = hospitalDoctorRepository;
         modelMapper = new ModelMapper();
 
     }
@@ -36,11 +40,12 @@ public class DoctorServiceImpl implements IDoctorService {
 
     @Override
     public DoctorDTO saveDoctor(DoctorDTO doctorDTO) {
-        return DoctorDTO.builder()
-                .Id(UUID.randomUUID())
-                .Name(doctorDTO.getName())
-                .LastName(doctorDTO.getLastName())
-                .build();
+
+        Doctor doctor = modelMapper.map(doctorDTO, Doctor.class);
+        doctor = _doctorRepository.save(doctor);
+        doctorDTO.setId(doctor.getId());
+        _HospitalDoctorRepository.save(new HospitalDoctor(doctorDTO.getHospitalId(), doctor.getId()));
+        return doctorDTO;
     }
 
     @Override

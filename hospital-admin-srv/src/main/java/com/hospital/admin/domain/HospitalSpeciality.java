@@ -27,5 +27,8 @@ public class HospitalSpeciality {
     public UUID HospitalId;
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false)
     public UUID SpecialityId;
-
+    public HospitalSpeciality(UUID HospitalId,UUID SpecialityId){
+        this.HospitalId=HospitalId;
+        this.SpecialityId=SpecialityId;
+    }
 }

@@ -21,5 +21,5 @@ public class SpecialityDTO {
     @NotBlank
     private String Name;
     private String Description;
-
+    private UUID hospitalId;
 }

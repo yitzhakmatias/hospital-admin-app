@@ -28,4 +28,8 @@ public class HospitalDoctor {
     @Column(length = 36, columnDefinition = "varchar(36)", updatable = false)
     public UUID DoctorId;
 
+    public HospitalDoctor(UUID hospitalId, UUID id) {
+        this.HospitalId = hospitalId;
+        this.DoctorId = id;
+    }
 }

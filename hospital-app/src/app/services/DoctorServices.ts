@@ -30,4 +30,13 @@ export class DoctorServices {
     });
     return doctor;
   }
+
+  saveDoctor(model): any {
+
+    return axios.post(this.baseUrl + '/add', model).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 }

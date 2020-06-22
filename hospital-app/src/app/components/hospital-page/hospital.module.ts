@@ -8,6 +8,7 @@ import {SpecialityList} from './components/SpecialityList';
 import {HospitalForm} from './Forms/HospitalForm';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SpecialityForm} from './Forms/SpecialityForm';
+import {DoctorForm} from './Forms/DoctorForm';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {SpecialityForm} from './Forms/SpecialityForm';
     PatientList,
     SpecialityList,
     HospitalForm,
-    SpecialityForm
+    SpecialityForm,
+    DoctorForm
   ],
   exports: [
     DoctorList,
@@ -24,7 +26,7 @@ import {SpecialityForm} from './Forms/SpecialityForm';
     PatientList,
     HospitalForm,
     SpecialityForm,
-
+    DoctorForm
   ],
   imports: [
     FormsModule,

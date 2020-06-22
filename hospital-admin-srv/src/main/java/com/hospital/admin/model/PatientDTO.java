@@ -39,7 +39,7 @@ public class PatientDTO {
 
     private List<NoteDTO> Notes;
 
-   // private List<DoctorDTO> Doctors;
+    private UUID hospitalId;
 
 
 }

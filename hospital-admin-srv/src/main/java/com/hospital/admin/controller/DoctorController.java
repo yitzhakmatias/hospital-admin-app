@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 @RequestMapping("/api/v1/doctor")
@@ -39,7 +40,7 @@ public class DoctorController {
         return new ResponseEntity<>(doctorService.GetDoctorById(id), HttpStatus.OK);
     }
 
-    @PostMapping // POST -create a new Patient
+    @PostMapping("/add")// POST -create a new Patient
     public ResponseEntity handlePost(@Valid @RequestBody DoctorDTO doctorDTO) {
         log.debug("handle post...");
         val saveDto = doctorService.saveDoctor(doctorDTO);
