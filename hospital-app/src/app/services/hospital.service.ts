@@ -29,6 +29,7 @@ export class HospitalService {
       console.log(error);
     });
   }
+
   getSpecialitiesByHospital(uuid) {
     return axios.get(this.baseUrl + '/specialities/' + uuid).then((response) => {
 
@@ -38,11 +39,20 @@ export class HospitalService {
       console.log(error);
     });
   }
+
   getPatientsByHospital(uuid) {
     return axios.get(this.baseUrl + '/patients/' + uuid).then((response) => {
 
       return response.data;
 
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  saveHospital(model): any {
+    return axios.post(this.baseUrl + '/add', model).then((response) => {
+      console.log(response);
     }).catch((error) => {
       console.log(error);
     });

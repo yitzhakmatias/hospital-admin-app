@@ -7,7 +7,7 @@
     </header>
     <section class="modal-card-body">
       <div class="tile is-child box">
-        <div [formGroup]="hospitalForm" (ngSubmit)="Save()">
+        <form [formGroup]="hospitalForm" (ngSubmit)="Save()">
           <div class="field ">
             <label class="label">Name</label>
             <input formControlName="name" class="input" type="text" placeholder="Hospital Name">
@@ -15,14 +15,22 @@
               <div *ngIf="f.amount.errors.required">Name is required</div>
             </div>
           </div>
+
+          <div class="field ">
+            <label class="label">Details</label>
+
+            <textarea formControlName="details" class="textarea"  placeholder="Details "></textarea>
+
+          </div>
+
           <div class="field ">
             <div class=" buttons">
-              <button class="button is-primary" onClick="">Save</button>
-              <button class="button is-danger" onClick="">Close</button>
+              <button class="button is-primary" >Save</button>
+              <button class="button is-danger" (click)="close()">Close</button>
             </div>
           </div>
 
-        </div>
+        </form>
       </div>
     </section>
   </div>

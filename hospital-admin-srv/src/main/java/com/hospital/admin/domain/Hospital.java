@@ -25,6 +25,8 @@ public class Hospital extends Audit {
     private UUID id;
 
     private String Name;
+    private String Details;
+
     private String Photo;
 
     private String CreatedBy;

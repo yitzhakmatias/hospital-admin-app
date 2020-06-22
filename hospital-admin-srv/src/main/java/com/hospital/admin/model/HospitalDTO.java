@@ -21,15 +21,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class HospitalDTO {
+public class HospitalDTO  {
     @JsonProperty("HospitalId")
     @Null
     private UUID Id;
     @NotBlank
     private String Name;
+    private String Details;
     private String Photo;
-    private String CreatedBy;
-    private String UpdatedBy;
+
     private Timestamp UpdatedTime;
 
     @Builder.Default
