@@ -7,6 +7,7 @@ import com.hospital.admin.model.SpecialityDTO;
 import com.hospital.admin.services.IHospitalServices;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
+import lombok.var;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

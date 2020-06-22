@@ -6,6 +6,7 @@ import com.hospital.admin.domain.Patient;
 import com.hospital.admin.repositories.DoctorRepository;
 import com.hospital.admin.repositories.PatientRepository;
 import lombok.val;
+import lombok.var;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;

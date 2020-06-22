@@ -1,5 +1,6 @@
 # Getting Started
-
+Run the command `mvn spring-boot:run` 
+and be sure the port 5000 is not being used 
 ### Reference Documentation
 For further reference, please consider the following sections:
 

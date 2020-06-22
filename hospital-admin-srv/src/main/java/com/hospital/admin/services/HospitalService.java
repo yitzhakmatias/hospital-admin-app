@@ -7,6 +7,7 @@ import com.hospital.admin.model.HospitalDTO;
 import com.hospital.admin.model.PatientDTO;
 import com.hospital.admin.model.SpecialityDTO;
 import com.hospital.admin.repositories.HospitalRepository;
+import lombok.var;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;

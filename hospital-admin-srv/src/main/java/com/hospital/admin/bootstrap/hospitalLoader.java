@@ -3,6 +3,7 @@ package com.hospital.admin.bootstrap;
 import com.hospital.admin.domain.*;
 import com.hospital.admin.repositories.*;
 import lombok.val;
+import lombok.var;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
