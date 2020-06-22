@@ -12,28 +12,34 @@ export class HospitalPageComponent implements OnInit {
   doctors: any;
   specialities: any;
   patients: any;
-  isHospVisible:boolean;
+  isHospVisible: boolean;
+  hospitalId: any;
+
   constructor(private  hospitalServices: HospitalService) {
-    this.isHospVisible=true;
+    this.isHospVisible = true;
   }
 
   ngOnInit(): void {
+    this.loadHospitals();
+  }
+
+  loadHospitals() {
     this.hospitalServices.getHospitals().then((resp) => {
       this.hospitals = resp;
     });
   }
 
   loadDependencies(event) {
-    var target = event.currentTarget;
-    var idAttr = target.attributes.id.value;
-    this.hospitalServices.getDoctorsByHospital(idAttr).then((res) => {
+    let target = event.currentTarget;
+    this.hospitalId = target.attributes.id.value;
+    this.hospitalServices.getDoctorsByHospital( this.hospitalId).then((res) => {
       this.doctors = res;
     });
-    this.hospitalServices.getSpecialitiesByHospital(idAttr).then(res => {
+    this.hospitalServices.getSpecialitiesByHospital( this.hospitalId).then(res => {
         this.specialities = res;
       }
     );
-    this.hospitalServices.getPatientsByHospital(idAttr).then(res => {
+    this.hospitalServices.getPatientsByHospital( this.hospitalId).then(res => {
         this.patients = res;
       }
     );
@@ -50,6 +56,7 @@ export class HospitalPageComponent implements OnInit {
   }
 
   showHospitalForm() {
-    this.isHospVisible=!this.isHospVisible;
+    this.isHospVisible = !this.isHospVisible;
+    this.loadHospitals();
   }
 }
