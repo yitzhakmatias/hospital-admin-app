@@ -1,0 +1,47 @@
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Doctor</p>
+      <button class="delete" aria-label="close" (click)="close()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="tile is-child box">
+        <form [formGroup]="patientHospForm" (ngSubmit)="Save($event)">
+          <div class="field ">
+            <label class="label">Name</label>
+            <input formControlName="name" class="input" type="text" placeholder="Doctor Name">
+            <div *ngIf="submitted && f.amount.errors" class="help is-danger">
+              <div *ngIf="f.amount.errors.required">Name is required</div>
+            </div>
+          </div>
+          <div class="field ">
+            <label class="label">Last Name</label>
+            <input formControlName="lastName" class="input" type="text" placeholder="Doctor lastName">
+            <div *ngIf="submitted && f.amount.errors" class="help is-danger">
+              <div *ngIf="f.amount.errors.required">Name is required</div>
+            </div>.
+          </div>
+          <div class="field ">
+            <label class="label">Address</label>
+            <input formControlName="address" class="input" type="text" placeholder="Address">
+            <div *ngIf="submitted && f.amount.errors" class="help is-danger">
+              <div *ngIf="f.amount.errors.required">Name is required</div>
+            </div>
+          </div>
+
+          <div class="field ">
+            <div class=" buttons">
+              <button class="button is-primary" type="submit" value="save">Save</button>
+              <button class="button is-danger" (click)="close()"  value="close">Close</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+

@@ -25,6 +25,7 @@ public class DoctorServiceImpl implements IDoctorService {
     private final DoctorRepository _doctorRepository;
     private final HospitalDoctorRepository _HospitalDoctorRepository;
     private ModelMapper modelMapper;
+
     public DoctorServiceImpl(DoctorRepository doctorRepository, HospitalDoctorRepository hospitalDoctorRepository) {
         this._doctorRepository = doctorRepository;
         _HospitalDoctorRepository = hospitalDoctorRepository;
@@ -43,8 +44,15 @@ public class DoctorServiceImpl implements IDoctorService {
 
         Doctor doctor = modelMapper.map(doctorDTO, Doctor.class);
         doctor = _doctorRepository.save(doctor);
+       /* doctor = _doctorRepository.save(Doctor.builder()
+                .id(UUID.randomUUID())
+                .Name(doctorDTO.getName())
+                .LastName(doctorDTO.getLastName())
+                .Address(doctorDTO.getAddress())
+                .build());*/
+
         doctorDTO.setId(doctor.getId());
-        _HospitalDoctorRepository.save(new HospitalDoctor(doctorDTO.getHospitalId(), doctor.getId()));
+        var x = _HospitalDoctorRepository.save(new HospitalDoctor(doctorDTO.getHospitalId(), doctor.getId()));
         return doctorDTO;
     }
 

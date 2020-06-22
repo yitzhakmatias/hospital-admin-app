@@ -18,6 +18,7 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "Doctor")
 public class Doctor extends Audit {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -27,14 +28,9 @@ public class Doctor extends Audit {
 
     private String Name;
     private String LastName;
-
     private Timestamp BirthDate;
     private String Address;
     private String Photo;
-
-
-    private String CreatedBy;
-    private String UpdatedBy;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "doctor_patient",

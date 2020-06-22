@@ -40,15 +40,10 @@ public class DoctorController {
         return new ResponseEntity<>(doctorService.GetDoctorById(id), HttpStatus.OK);
     }
 
-    @PostMapping("/add")// POST -create a new Patient
-    public ResponseEntity handlePost(@Valid @RequestBody DoctorDTO doctorDTO) {
-        log.debug("handle post...");
-        val saveDto = doctorService.saveDoctor(doctorDTO);
-        var headers = new HttpHeaders();
-        headers.add("Location", "/api/v1/doctor/" + saveDto.getId().toString());
-        return new ResponseEntity(headers, HttpStatus.CREATED);
+    @PostMapping("/add")
+    public ResponseEntity<DoctorDTO> createHospital(@Valid @RequestBody DoctorDTO hospitalDTO) {
+        return new ResponseEntity<>(doctorService.saveDoctor(hospitalDTO), HttpStatus.OK);
     }
-
     @PutMapping("/{doctorId}")
     public ResponseEntity updateDoctor(@PathVariable("beerId") UUID uuid, @RequestBody @Validated DoctorDTO doctorDTO) {
         return new ResponseEntity<>(doctorService.updateDoctor(uuid, doctorDTO), HttpStatus.NO_CONTENT);

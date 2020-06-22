@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PatientComponent} from '../patient/patient.component';
-import {PatientForm} from '../patient/components/patient-form';
+
 import {DoctorList} from './components/DoctorList';
 import {PatientList} from './components/PatientList';
 import {SpecialityList} from './components/SpecialityList';
@@ -9,6 +8,7 @@ import {HospitalForm} from './Forms/HospitalForm';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SpecialityForm} from './Forms/SpecialityForm';
 import {DoctorForm} from './Forms/DoctorForm';
+import {PatientHospitalForm} from './Forms/patient-hospital-form.component';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import {DoctorForm} from './Forms/DoctorForm';
     SpecialityList,
     HospitalForm,
     SpecialityForm,
-    DoctorForm
+    DoctorForm,
+    PatientHospitalForm
   ],
   exports: [
     DoctorList,
@@ -26,7 +27,8 @@ import {DoctorForm} from './Forms/DoctorForm';
     PatientList,
     HospitalForm,
     SpecialityForm,
-    DoctorForm
+    DoctorForm,
+    PatientHospitalForm
   ],
   imports: [
     FormsModule,

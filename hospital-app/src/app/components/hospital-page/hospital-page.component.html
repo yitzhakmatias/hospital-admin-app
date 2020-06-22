@@ -27,7 +27,7 @@
         </button>
       </p>
       <p class="control">
-        <button class="button is-link">
+        <button class="button is-link" (click)="showPatientForm()">
           Add Patient
         </button>
       </p>
@@ -94,6 +94,7 @@
 
   <app-hospital-form ngDefaultControl [hidden]="isHospVisible" (onClose)="showHospitalForm()" ></app-hospital-form>
   <app-speciality-form ngDefaultControl [hidden]="isSpecVisible" [hospitalUUID]="hospitalId" (onCloseSpeciality)="showSpecialityForm()" ></app-speciality-form>
+  <app-patient-hospital-form ngDefaultControl [hidden]="isPatVisible" [hospitalUUID]="hospitalId" (onClose)="showPatientForm()" ></app-patient-hospital-form>
   <app-doctor-form ngDefaultControl [hidden]="isDoctorVisible" [hospitalUUID]="hospitalId"
                    (onClose)="showDoctorForm()"></app-doctor-form>
 
