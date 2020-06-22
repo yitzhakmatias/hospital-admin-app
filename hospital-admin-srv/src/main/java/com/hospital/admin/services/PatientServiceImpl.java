@@ -1,13 +1,14 @@
 package com.hospital.admin.services;
 
+import com.hospital.admin.domain.HospitalPatient;
 import com.hospital.admin.domain.Patient;
 import com.hospital.admin.mappers.PatientMapper;
 import com.hospital.admin.model.PatientDTO;
+import com.hospital.admin.repositories.HospitalPatientRepository;
 import com.hospital.admin.repositories.PatientRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -15,10 +16,12 @@ import java.util.stream.Collectors;
 @Service
 public class PatientServiceImpl implements IPatientService {
     private final PatientRepository _patientRepository;
+    private final HospitalPatientRepository _hospitalPatientRepository;
     private ModelMapper modelMapper;
 
-    public PatientServiceImpl(PatientRepository patientRepository) {
+    public PatientServiceImpl(PatientRepository patientRepository, HospitalPatientRepository hospitalPatientRepository) {
         _patientRepository = patientRepository;
+        _hospitalPatientRepository = hospitalPatientRepository;
         modelMapper = new ModelMapper();
     }
 
@@ -33,6 +36,7 @@ public class PatientServiceImpl implements IPatientService {
         Patient patient = modelMapper.map(patientDTO, Patient.class);
         patient = _patientRepository.save(patient);
         patientDTO.setId(patient.getId());
+        _hospitalPatientRepository.save(new HospitalPatient(patientDTO.getHospitalId(), patient.getId()));
         return patientDTO;
     }
 
@@ -58,8 +62,6 @@ public class PatientServiceImpl implements IPatientService {
         Patient patient = _patientRepository.getOne(id);
         _patientRepository.delete(patient);
     }
-
-
 
 
     @Override

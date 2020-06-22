@@ -25,7 +25,7 @@ public class PatientDTO {
     private String Name;
     @NotBlank
     private String LastName;
-    @NotBlank
+
     private Timestamp BirthDate;
     @NotBlank
     private String Address;
