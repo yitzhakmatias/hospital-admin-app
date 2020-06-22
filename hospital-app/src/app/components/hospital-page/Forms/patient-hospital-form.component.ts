@@ -7,6 +7,7 @@ import {SpecialityService} from '../../../services/speciality.service';
 import {Doctor} from '../../../Model/Doctor';
 import {DoctorServices} from '../../../services/DoctorServices';
 import {Patient} from '../../../Model/Patient';
+import {PatientService} from '../../../services/PatientService';
 
 @Component({
   selector: 'app-patient-hospital-form',
@@ -22,7 +23,7 @@ export class PatientHospitalForm implements OnInit {
   @Input()
   hospitalUUID: any;
 
-  constructor(private formBuilder: FormBuilder, private doctorSrv: DoctorServices) {
+  constructor(private formBuilder: FormBuilder, private patientSrv: PatientService) {
   }
 
   ngOnInit(): void {
@@ -49,7 +50,7 @@ export class PatientHospitalForm implements OnInit {
 
       this.patient.hospitalId = this.hospitalUUID;
 
-      this.doctorSrv.saveDoctor(this.patient).then(response => {
+      this.patientSrv.savePatient(this.patient).then(response => {
         let resp = response;
         this.close();
       }).catch(e => {

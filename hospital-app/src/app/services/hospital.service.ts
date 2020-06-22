@@ -5,7 +5,7 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class HospitalService {
-  baseUrl = 'http://localhost:8082/api/v1/hospital/';
+  baseUrl = 'http://localhost:8082/api/v1/hospital';
 
   constructor() {
   }

@@ -2,7 +2,7 @@
   <div class="modal-background"></div>
   <div class="modal-content">
     <header class="modal-card-head">
-      <p class="modal-card-title">Doctor</p>
+      <p class="modal-card-title">Patient</p>
       <button class="delete" aria-label="close" (click)="close()"></button>
     </header>
     <section class="modal-card-body">
@@ -10,14 +10,14 @@
         <form [formGroup]="patientHospForm" (ngSubmit)="Save($event)">
           <div class="field ">
             <label class="label">Name</label>
-            <input formControlName="name" class="input" type="text" placeholder="Doctor Name">
+            <input formControlName="name" class="input" type="text" placeholder="Patient Name">
             <div *ngIf="submitted && f.amount.errors" class="help is-danger">
               <div *ngIf="f.amount.errors.required">Name is required</div>
             </div>
           </div>
           <div class="field ">
             <label class="label">Last Name</label>
-            <input formControlName="lastName" class="input" type="text" placeholder="Doctor lastName">
+            <input formControlName="lastName" class="input" type="text" placeholder="Patient lastName">
             <div *ngIf="submitted && f.amount.errors" class="help is-danger">
               <div *ngIf="f.amount.errors.required">Name is required</div>
             </div>.
@@ -29,7 +29,13 @@
               <div *ngIf="f.amount.errors.required">Name is required</div>
             </div>
           </div>
-
+          <div class="field ">
+            <label class="label">Address</label>
+            <input  type="date" data-display-mode="inline" data-is-range="true" data-close-on-select="false">
+            <div *ngIf="submitted && f.amount.errors" class="help is-danger">
+              <div *ngIf="f.amount.errors.required">Name is required</div>
+            </div>
+          </div>
           <div class="field ">
             <div class=" buttons">
               <button class="button is-primary" type="submit" value="save">Save</button>

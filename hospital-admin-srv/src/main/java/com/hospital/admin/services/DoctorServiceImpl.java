@@ -6,6 +6,7 @@ import com.hospital.admin.domain.HospitalSpeciality;
 import com.hospital.admin.model.DoctorDTO;
 import com.hospital.admin.repositories.DoctorRepository;
 import com.hospital.admin.repositories.HospitalDoctorRepository;
+import lombok.var;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,17 +43,15 @@ public class DoctorServiceImpl implements IDoctorService {
     @Override
     public DoctorDTO saveDoctor(DoctorDTO doctorDTO) {
 
-        Doctor doctor = modelMapper.map(doctorDTO, Doctor.class);
-        doctor = _doctorRepository.save(doctor);
-       /* doctor = _doctorRepository.save(Doctor.builder()
-                .id(UUID.randomUUID())
-                .Name(doctorDTO.getName())
-                .LastName(doctorDTO.getLastName())
-                .Address(doctorDTO.getAddress())
-                .build());*/
+        Doctor doctor = new Doctor();
+        doctor.setName(doctorDTO.getName());
+        doctor.setLastName(doctorDTO.getLastName());
+        doctor.setAddress(doctorDTO.getAddress());
 
+        //modelMapper.map(doctorDTO, Doctor.class);
+        doctor = _doctorRepository.save(doctor);
         doctorDTO.setId(doctor.getId());
-        var x = _HospitalDoctorRepository.save(new HospitalDoctor(doctorDTO.getHospitalId(), doctor.getId()));
+        _HospitalDoctorRepository.save(new HospitalDoctor(doctorDTO.getHospitalId(), doctor.getId()));
         return doctorDTO;
     }
 

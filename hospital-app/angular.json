@@ -88,9 +88,12 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bulma-calendar/dist/css/bulma-calendar.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bulma-calendar/dist/js/bulma-calendar.min.js"
+            ]
           }
         },
         "lint": {
