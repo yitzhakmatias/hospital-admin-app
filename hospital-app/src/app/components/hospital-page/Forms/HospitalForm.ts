@@ -16,7 +16,7 @@ export class HospitalForm implements OnInit {
   hospital: Hospital;
 
   constructor(private formBuilder: FormBuilder, private hospitalSrv: HospitalService) {
-    console.log('asdfasdfasdfsadfsad');
+
   }
 
   ngOnInit(): void {
@@ -38,9 +38,9 @@ export class HospitalForm implements OnInit {
     this.hospital.name = name;
     this.hospital.details = details;
 
-    this.hospitalSrv.saveHospital( this.hospital).then(response => {
+    this.hospitalSrv.saveHospital(this.hospital).then(response => {
       let resp = response;
-      //this.getPurchaseList();
+      this.close();
     }).catch(e => {
       console.log(e);
     });

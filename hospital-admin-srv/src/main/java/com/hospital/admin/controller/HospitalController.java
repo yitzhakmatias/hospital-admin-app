@@ -38,7 +38,7 @@ public class HospitalController {
 
     @PostMapping("/add")
     public ResponseEntity<HospitalDTO> createHospital(@Valid @RequestBody HospitalDTO hospitalDTO) {
-        return new ResponseEntity<>(hospitalServices.saveHospital(hospitalDTO), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(hospitalServices.saveHospital(hospitalDTO), HttpStatus.OK);
     }
 
     @PutMapping("/update/{id}")// POST -create a new Patient

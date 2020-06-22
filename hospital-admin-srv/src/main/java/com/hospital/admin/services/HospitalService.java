@@ -52,9 +52,7 @@ public class HospitalService implements IHospitalServices {
 
         hospital.setName(hospitalDTO.getName());
 
-        hospital.setUpdatedBy(hospitalDTO.getUpdatedBy());
 
-        hospital.setUpdatedBy(hospitalDTO.getUpdatedBy());
 
         hospital = _hospitalRepository.save(hospital);
 
