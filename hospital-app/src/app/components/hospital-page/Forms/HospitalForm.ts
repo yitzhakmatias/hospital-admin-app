@@ -31,19 +31,21 @@ export class HospitalForm implements OnInit {
     return this.hospitalForm.controls;
   }
 
-  Save() {
-    let name = this.hospitalForm.get('name').value;
-    let details = this.hospitalForm.get('details').value;
-    this.hospital = new Hospital();
-    this.hospital.name = name;
-    this.hospital.details = details;
+  Save(event) {
+    if (event.submitter.value === 'save') {
+      let name = this.hospitalForm.get('name').value;
+      let details = this.hospitalForm.get('details').value;
+      this.hospital = new Hospital();
+      this.hospital.name = name;
+      this.hospital.details = details;
 
-    this.hospitalSrv.saveHospital(this.hospital).then(response => {
-      let resp = response;
-      this.close();
-    }).catch(e => {
-      console.log(e);
-    });
+      this.hospitalSrv.saveHospital(this.hospital).then(response => {
+        let resp = response;
+        this.close();
+      }).catch(e => {
+        console.log(e);
+      });
+    }
   }
 
   close() {

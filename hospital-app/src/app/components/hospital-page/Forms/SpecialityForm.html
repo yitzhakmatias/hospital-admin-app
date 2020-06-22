@@ -2,12 +2,12 @@
   <div class="modal-background"></div>
   <div class="modal-content">
     <header class="modal-card-head">
-      <p class="modal-card-title">Hospital</p>
+      <p class="modal-card-title">Speciality</p>
       <button class="delete" aria-label="close" (click)="close()"></button>
     </header>
     <section class="modal-card-body">
       <div class="tile is-child box">
-        <form [formGroup]="hospitalForm" (ngSubmit)="Save($event)">
+        <form [formGroup]="SpecialityForm" (ngSubmit)="Save($event)">
           <div class="field ">
             <label class="label">Name</label>
             <input formControlName="name" class="input" type="text" placeholder="Hospital Name">
@@ -17,16 +17,16 @@
           </div>
 
           <div class="field ">
-            <label class="label">Details</label>
+            <label class="label">Description</label>
 
-            <textarea formControlName="details" class="textarea"  placeholder="Details "></textarea>
+            <textarea formControlName="details" class="textarea"  placeholder="Description "></textarea>
 
           </div>
 
           <div class="field ">
             <div class=" buttons">
-              <button class="button is-primary" value="save">Save</button>
-              <button class="button is-danger" (click)="close()">Close</button>
+              <button class="button is-primary" type="submit" value="save">Save</button>
+              <button class="button is-danger" (click)="close()"  value="close">Close</button>
             </div>
           </div>
 

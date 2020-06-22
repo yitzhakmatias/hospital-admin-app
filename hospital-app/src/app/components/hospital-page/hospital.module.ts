@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {PatientComponent} from '../patient/patient.component';
 import {PatientForm} from '../patient/components/patient-form';
 import {DoctorList} from './components/DoctorList';
 import {PatientList} from './components/PatientList';
 import {SpecialityList} from './components/SpecialityList';
-import { HospitalForm } from './Forms/HospitalForm';
+import {HospitalForm} from './Forms/HospitalForm';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import {SpecialityForm} from './Forms/SpecialityForm';
 
 
 @NgModule({
@@ -15,13 +15,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     DoctorList,
     PatientList,
     SpecialityList,
-    HospitalForm
+    HospitalForm,
+    SpecialityForm
   ],
   exports: [
     DoctorList,
     SpecialityList,
     PatientList,
-    HospitalForm
+    HospitalForm,
+    SpecialityForm,
+
   ],
   imports: [
     FormsModule,
@@ -29,4 +32,5 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ReactiveFormsModule
   ]
 })
-export class HospitalModule { }
+export class HospitalModule {
+}

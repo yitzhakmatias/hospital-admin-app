@@ -57,4 +57,5 @@ export class HospitalService {
       console.log(error);
     });
   }
+
 }

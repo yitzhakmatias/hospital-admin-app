@@ -13,10 +13,11 @@ export class HospitalPageComponent implements OnInit {
   specialities: any;
   patients: any;
   isHospVisible: boolean;
+  isSpecVisible: boolean;
   hospitalId: any;
 
   constructor(private  hospitalServices: HospitalService) {
-    this.isHospVisible = true;
+    this.isHospVisible = true;    this.isSpecVisible = true;
   }
 
   ngOnInit(): void {
@@ -57,6 +58,11 @@ export class HospitalPageComponent implements OnInit {
 
   showHospitalForm() {
     this.isHospVisible = !this.isHospVisible;
+    this.loadHospitals();
+  }
+  showSpecialityForm() {
+
+    this.isSpecVisible = !this.isSpecVisible;
     this.loadHospitals();
   }
 }
