@@ -81,4 +81,8 @@ export class HospitalPageComponent implements OnInit {
     this.isPatVisible = !this.isPatVisible;
     this.loadHospitals();
   }
+
+  isHidden() {
+    return this.hospitalId===undefined;
+  }
 }

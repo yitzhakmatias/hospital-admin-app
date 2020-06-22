@@ -19,29 +19,31 @@
 
   <div class="tile is-vertical is-8">
 
-
-    <div class=" buttons is-right">
-      <p class="control">
-        <button class="button is-link" (click)="showHospitalForm()">
-          Add Hospital
-        </button>
-      </p>
-      <p class="control">
-        <button class="button is-link" (click)="showPatientForm()">
-          Add Patient
-        </button>
-      </p>
-      <p class="control">
-        <button class="button is-link"  (click)="showDoctorForm()">
-          Add Doctor
-        </button>
-      </p>
-      <p class="control">
-        <button class="button is-link"  (click)="showSpecialityForm()">
-          Add Speciality
-        </button>
-      </p>
+    <div [hidden]="isHidden()">
+      <div class=" buttons is-right">
+        <p class="control">
+          <button class="button is-link" (click)="showHospitalForm()">
+            Add Hospital
+          </button>
+        </p>
+        <p class="control">
+          <button class="button is-link" (click)="showPatientForm()">
+            Add Patient
+          </button>
+        </p>
+        <p class="control">
+          <button class="button is-link" (click)="showDoctorForm()">
+            Add Doctor
+          </button>
+        </p>
+        <p class="control">
+          <button class="button is-link" (click)="showSpecialityForm()">
+            Add Speciality
+          </button>
+        </p>
+      </div>
     </div>
+
     <div class="tile">
       <div class="tile is-parent is-vertical">
 
@@ -92,9 +94,11 @@
 
   </div>
 
-  <app-hospital-form ngDefaultControl [hidden]="isHospVisible" (onClose)="showHospitalForm()" ></app-hospital-form>
-  <app-speciality-form ngDefaultControl [hidden]="isSpecVisible" [hospitalUUID]="hospitalId" (onCloseSpeciality)="showSpecialityForm()" ></app-speciality-form>
-  <app-patient-hospital-form ngDefaultControl [hidden]="isPatVisible" [hospitalUUID]="hospitalId" (onClose)="showPatientForm()" ></app-patient-hospital-form>
+  <app-hospital-form ngDefaultControl [hidden]="isHospVisible" (onClose)="showHospitalForm()"></app-hospital-form>
+  <app-speciality-form ngDefaultControl [hidden]="isSpecVisible" [hospitalUUID]="hospitalId"
+                       (onCloseSpeciality)="showSpecialityForm()"></app-speciality-form>
+  <app-patient-hospital-form ngDefaultControl [hidden]="isPatVisible" [hospitalUUID]="hospitalId"
+                             (onClose)="showPatientForm()"></app-patient-hospital-form>
   <app-doctor-form ngDefaultControl [hidden]="isDoctorVisible" [hospitalUUID]="hospitalId"
                    (onClose)="showDoctorForm()"></app-doctor-form>
 
