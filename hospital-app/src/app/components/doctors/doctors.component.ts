@@ -20,25 +20,36 @@ export class DoctorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.doctorService.getDoctors().then((resp) => {
+    this.loadDoctors().then(() => {
+    });
+  }
+
+  async loadDoctors() {
+    await this.doctorService.getDoctors().then((resp) => {
 
       this.doctorList = resp;
 
     });
-
   }
 
   onOptionsSelected(item): void {
     if (this.doctorList !== undefined) {
       this.doctorId = item.target.value;
-      let list = this.doctorList.filter(p => p.DoctorId === item.target.value);
-      console.log(list);
-
-      this.patientList = list[0].patients;
+      this.loadPatients(this.doctorId);
     }
+  }
+
+  loadPatients(doctorId) {
+    let list = this.doctorList.filter(p => p.DoctorId === doctorId);
+
+    this.patientList = list[0].patients;
   }
 
   showPatientForm() {
     this.isPatientFormHidden = !this.isPatientFormHidden;
+    this.loadDoctors().then(() => {
+      this.loadPatients(this.doctorId);
+    });
+
   }
 }
