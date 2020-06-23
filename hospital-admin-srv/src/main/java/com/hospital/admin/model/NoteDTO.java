@@ -21,4 +21,5 @@ public class NoteDTO {
     @NotBlank
     private String Note;
     private String DoctorName;
+    private UUID PatientId;
 }

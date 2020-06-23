@@ -2,14 +2,28 @@
   <h2 class="subtitle"><strong>Doctor's List :</strong></h2>
 
   <div class="control">
-    <div class="select">
-      <select formControlName="doctors" (change)='onOptionsSelected($event)'>
-        <option>--Seleccionar Doctor--</option>
-        <option *ngFor="let item of doctorList" [value]="item.DoctorId">{{item.name}} {{item.lastName}}</option>
-      </select>
 
-    </div>
+    <nav class="level">
+      <!-- Left side -->
+      <div class="level-left">
+        <div class="level-item">
+          <div class="select">
+            <select (change)='onOptionsSelected($event)'>
+              <option>--Seleccionar Doctor--</option>
+              <option *ngFor="let item of doctorList" [value]="item.DoctorId">{{item.name}} {{item.lastName}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side -->
+      <div class="level-right">
+        <p class="level-item"><a class="button is-link" (click)="showPatientForm()">Add New Patient</a></p>
+      </div>
+    </nav>
+
   </div>
+
 </div>
 
 
@@ -27,5 +41,6 @@
   </div>
 </div>
 
-
+<app-patient-form-component ngDefaultControl [hidden]="isPatientFormHidden" (onClose)="showPatientForm()"
+                            [doctorId]="doctorId"></app-patient-form-component>
 

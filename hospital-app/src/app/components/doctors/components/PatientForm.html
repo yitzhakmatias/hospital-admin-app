@@ -1,0 +1,42 @@
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Patient </p>
+      <button class="delete" aria-label="close" (click)="close()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="tile is-child box">
+        <form [formGroup]="patientForm" (ngSubmit)="Save($event)">
+          <div class="field ">
+            <label class="label">Name</label>
+            <div class="select">
+              <select formControlName="patientId" (change)='onOptionsSelected($event)'>
+                <option selected>-- Patient--</option>
+                <option *ngFor="let item of patientList" [value]="item.PatientId">{{item.name}} {{item.lastName}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field ">
+            <label class="label">Note</label>
+
+            <textarea formControlName="details" class="textarea"  placeholder="Details "></textarea>
+
+          </div>
+
+          <div class="field ">
+            <div class=" buttons">
+              <button class="button is-primary" value="save">Save</button>
+              <button class="button is-danger" (click)="close()">Close</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+

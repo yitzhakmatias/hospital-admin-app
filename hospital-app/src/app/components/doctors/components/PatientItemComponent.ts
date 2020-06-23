@@ -9,6 +9,7 @@ export class PatientItemComponent implements OnInit {
   @Input()
   patient: any;
   image: any;
+  note: any;
 
   constructor(private patientService: PatientService) {
 
@@ -20,6 +21,9 @@ export class PatientItemComponent implements OnInit {
     }).catch(e => {
       this.image = 'https://bulma.io/images/placeholders/128x128.png';
     });
+
+    let data = this.patient.notes.find(p => p.patientId === this.patient.PatientId);
+    this.note = data.note;
 
   }
 }

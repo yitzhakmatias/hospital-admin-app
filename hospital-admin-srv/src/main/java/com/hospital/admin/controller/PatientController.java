@@ -2,6 +2,7 @@ package com.hospital.admin.controller;
 
 import com.hospital.admin.model.DoctorDTO;
 import com.hospital.admin.model.PatientDTO;
+import com.hospital.admin.model.PatientNoteDTO;
 import com.hospital.admin.services.IDoctorService;
 import com.hospital.admin.services.IPatientService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,6 +43,10 @@ public class PatientController {
     @PostMapping("/add")
     public ResponseEntity<PatientDTO> createPatient(@Valid @RequestBody PatientDTO patientDTO) {
         return new ResponseEntity<>(patientService.savePatient(patientDTO), HttpStatus.ACCEPTED);
+    }
+    @PostMapping("/addnote")
+    public ResponseEntity<PatientNoteDTO> addNoteToPatient(@Valid @RequestBody PatientNoteDTO patientDTO) {
+        return new ResponseEntity<>(patientService.saveNotePatient(patientDTO), HttpStatus.ACCEPTED);
     }
 
     @PutMapping("/update/{id}")// POST -create a new Patient

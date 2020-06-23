@@ -29,6 +29,7 @@ export class PatientService {
       console.log(error);
     });
   }
+
   savePatient(model): any {
 
     return axios.post(this.baseUrl + '/add', model).then((response) => {
@@ -37,4 +38,13 @@ export class PatientService {
       console.log(error);
     });
   }
+
+  saveNotePatient(model): any {
+    return axios.post(this.baseUrl + '/addnote', model).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
 }

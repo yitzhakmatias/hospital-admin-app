@@ -3,13 +3,15 @@
 
   <div class="control">
     <div class="select">
-      <select formControlName="patients" (change)='onOptionsSelected($event)'>
+      <select (change)='onOptionsSelected($event)'>
         <option>-- Patient--</option>
         <option *ngFor="let item of patientList" [value]="item.PatientId">{{item.name}} {{item.lastName}}</option>
       </select>
-
     </div>
+
   </div>
+
+
 </div>
 
 

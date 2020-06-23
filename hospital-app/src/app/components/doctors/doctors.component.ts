@@ -12,9 +12,11 @@ export class DoctorsComponent implements OnInit {
 
   patientList: any;
   doctorList: any;
+  isPatientFormHidden: any;
+  doctorId: any;
 
   constructor(private  patientServices: PatientService, private  doctorService: DoctorServices) {
-    console.log("this is the doctors");
+    this.isPatientFormHidden = true;
   }
 
   ngOnInit(): void {
@@ -28,9 +30,15 @@ export class DoctorsComponent implements OnInit {
 
   onOptionsSelected(item): void {
     if (this.doctorList !== undefined) {
-      var list = this.doctorList.filter(p => p.DoctorId === item.target.value);
+      this.doctorId = item.target.value;
+      let list = this.doctorList.filter(p => p.DoctorId === item.target.value);
       console.log(list);
+
       this.patientList = list[0].patients;
     }
+  }
+
+  showPatientForm() {
+    this.isPatientFormHidden = !this.isPatientFormHidden;
   }
 }

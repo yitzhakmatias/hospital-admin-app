@@ -18,6 +18,7 @@ import {PatientItemComponent} from './components/doctors/components/PatientItemC
 import {DoctorItemComponent} from './components/patient/components/doctorItem.component';
 import {HospitalModule} from './components/hospital-page/hospital.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {DoctorModule} from './components/doctors/doctor.module';
 
 
 
@@ -49,7 +50,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
       }
     }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    HospitalModule
+    HospitalModule,
+    DoctorModule
 
   ],
   providers: [],
