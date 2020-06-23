@@ -57,7 +57,8 @@ public class PatientServiceImpl implements IPatientService {
         var doctor = _doctorRepository.findById(patientDTO.getDoctorId()).get();
         var note = new Note(patientDTO.getNote(), patient);
         _noteNoteRepository.save(note);
-        var patients = new HashSet<Patient>();
+
+        var patients = doctor.getPatients();
         patients.add(patient);
         doctor.setPatients(patients);
         _doctorRepository.save(doctor);
