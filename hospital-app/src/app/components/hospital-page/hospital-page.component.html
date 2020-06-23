@@ -1,9 +1,21 @@
 <div class="tile is-ancestor">
 
   <div class="tile is-parent">
-    <article class="tile is-child box">
-      <p class="title">Hospital </p>
-      <p class="help">Select a Hospital</p>
+
+
+    <nav class="panel">
+      <p class="panel-heading">
+        Hospitals
+      </p>
+      <div class="panel-block">
+        <p class="control has-icons-left">
+          <input class="input" type="text" placeholder="Search"  [(ngModel)]="search"  (ngModelChange)="updateHospitalList($event)">
+          <span class="icon is-left">
+        <i class="fas fa-search" aria-hidden="true"></i>
+      </span>
+        </p>
+      </div>
+
       <aside class="menu">
         <ul class="menu-list">
           <li *ngFor="let item of hospitals">
@@ -14,7 +26,12 @@
           </li>
         </ul>
       </aside>
-    </article>
+      <div class="panel-block">
+        <button class="button is-link is-outlined is-fullwidth" (click)="resetFilter()">
+          Reset all filters
+        </button>
+      </div>
+    </nav>
   </div>
 
   <div class="tile is-vertical is-8">
@@ -103,6 +120,8 @@
                    (onClose)="showDoctorForm()"></app-doctor-form>
 
 </div>
+
+
 
 
 

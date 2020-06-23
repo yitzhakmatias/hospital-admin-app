@@ -9,6 +9,7 @@ import {HospitalService} from '../../services/hospital.service';
 export class HospitalPageComponent implements OnInit {
 
   hospitals: any;
+  hospitalsOld: any;
   doctors: any;
   specialities: any;
   patients: any;
@@ -17,6 +18,7 @@ export class HospitalPageComponent implements OnInit {
   isPatVisible: boolean;
   isDoctorVisible: boolean;
   hospitalId: any;
+  search: any;
 
   constructor(private  hospitalServices: HospitalService) {
     this.isHospVisible = true;
@@ -32,20 +34,21 @@ export class HospitalPageComponent implements OnInit {
   loadHospitals() {
     this.hospitalServices.getHospitals().then((resp) => {
       this.hospitals = resp;
+      this.hospitalsOld = this.hospitals;
     });
   }
 
   loadDependencies(event) {
     let target = event.currentTarget;
     this.hospitalId = target.attributes.id.value;
-    this.hospitalServices.getDoctorsByHospital( this.hospitalId).then((res) => {
+    this.hospitalServices.getDoctorsByHospital(this.hospitalId).then((res) => {
       this.doctors = res;
     });
-    this.hospitalServices.getSpecialitiesByHospital( this.hospitalId).then(res => {
+    this.hospitalServices.getSpecialitiesByHospital(this.hospitalId).then(res => {
         this.specialities = res;
       }
     );
-    this.hospitalServices.getPatientsByHospital( this.hospitalId).then(res => {
+    this.hospitalServices.getPatientsByHospital(this.hospitalId).then(res => {
         this.patients = res;
       }
     );
@@ -65,11 +68,13 @@ export class HospitalPageComponent implements OnInit {
     this.isHospVisible = !this.isHospVisible;
     this.loadHospitals();
   }
+
   showSpecialityForm() {
 
     this.isSpecVisible = !this.isSpecVisible;
     this.loadHospitals();
   }
+
   showDoctorForm() {
 
     this.isDoctorVisible = !this.isDoctorVisible;
@@ -83,6 +88,24 @@ export class HospitalPageComponent implements OnInit {
   }
 
   isHidden() {
-    return this.hospitalId===undefined;
+    return this.hospitalId === undefined;
+  }
+
+  updateHospitalList($event) {
+    let search = $event;
+
+    if (search.length >= 3) {
+      this.hospitals = this.hospitals.filter(p => {
+        return p.name.includes(search);
+      });
+    } else {
+      this.hospitals = this.hospitalsOld;
+    }
+
+  }
+
+  resetFilter() {
+    this.hospitals = this.hospitalsOld;
+    this.search="";
   }
 }
