@@ -41,7 +41,14 @@ export class PatientHospitalForm implements OnInit {
   }
 
   Save(event: any) {
+
     if (event.submitter.value === 'save') {
+
+      this.submitted = true;
+
+      if (this.patientHospForm.invalid) {
+        return;
+      }
       let name = this.patientHospForm.get('name').value;
       let lastName = this.patientHospForm.get('lastName').value;
       this.patient = new Patient();

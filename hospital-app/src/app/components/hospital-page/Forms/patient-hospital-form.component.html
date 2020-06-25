@@ -11,29 +11,29 @@
           <div class="field ">
             <label class="label">Name</label>
             <input formControlName="name" class="input" type="text" placeholder="Patient Name">
-            <div *ngIf="submitted && f.amount.errors" class="help is-danger">
-              <div *ngIf="f.amount.errors.required">Name is required</div>
+            <div *ngIf="submitted && f.name.errors" class="help is-danger">
+              <div *ngIf="f.name.errors.required">Name is required</div>
             </div>
           </div>
           <div class="field ">
             <label class="label">Last Name</label>
             <input formControlName="lastName" class="input" type="text" placeholder="Patient lastName">
-            <div *ngIf="submitted && f.amount.errors" class="help is-danger">
-              <div *ngIf="f.amount.errors.required">Name is required</div>
+            <div *ngIf="submitted && f.lastName.errors" class="help is-danger">
+              <div *ngIf="f.lastName.errors.required">Last Name is required</div>
             </div>.
           </div>
           <div class="field ">
             <label class="label">Address</label>
             <input formControlName="address" class="input" type="text" placeholder="Address">
-            <div *ngIf="submitted && f.amount.errors" class="help is-danger">
-              <div *ngIf="f.amount.errors.required">Name is required</div>
+            <div *ngIf="submitted && f.address.errors" class="help is-danger">
+              <div *ngIf="f.address.errors.required">Address is required</div>
             </div>
           </div>
           <div class="field ">
             <label class="label">BirthDate</label>
-            <input formControlName="birthDate"  type="date" data-display-mode="inline" data-is-range="true" data-close-on-select="false">
-            <div *ngIf="submitted && f.amount.errors" class="help is-danger">
-              <div *ngIf="f.amount.errors.required">Name is required</div>
+            <input formControlName="birthDate" class="input"  type="date" data-display-mode="inline" data-is-range="true" data-close-on-select="false" [ngClass]="{ 'input is-danger': submitted && f.birthDate.errors }">
+            <div *ngIf="submitted && f.birthDate.errors" class="help is-danger">
+              <div *ngIf="f.birthDate.errors.required">birthDate is required</div>
             </div>
           </div>
           <div class="field ">
