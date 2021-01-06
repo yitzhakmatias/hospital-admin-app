@@ -27,7 +27,7 @@
     "@ngrx/schematics": "^9.2.0",
     "@ngrx/store": "^9.2.0",
     "@ngrx/store-devtools": "^9.2.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bulma": "^0.9.0",
     "bulma-block-list": "^0.4.0",
     "bulma-calendar": "^6.0.7",
